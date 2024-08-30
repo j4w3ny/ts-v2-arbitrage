@@ -10,3 +10,6 @@
 [submodule "lib/openzeppelin-contracts"]
 	path = lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "lib/Timeswap-V2-Contracts"]
+	path = lib/Timeswap-V2-Contracts
+	url = https://github.com/Timeswap-Labs/Timeswap-V2-Contracts
