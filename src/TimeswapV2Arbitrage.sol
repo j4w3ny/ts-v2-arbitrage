@@ -42,10 +42,7 @@ contract TimeswapV2Arbitrage is
         swapRouter = _swapRouter;
     }
 
-    // function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external override {
-    //     FlashCallbackData memory decoded = abi.decode(data, (FlashCallbackData));
-    //     CallbackValidation.verifyCallback(factory, decoded.poolKey);
-    // }
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external override {}
 
     // @dev mint short by flash swap to ensure it pass.
 
