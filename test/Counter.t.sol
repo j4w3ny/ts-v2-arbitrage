@@ -10,7 +10,6 @@ import {TimeswapV2Arbitrage} from "../src/TimeswapV2Arbitrage.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
 import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
-import "@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol";
 
 contract TimeswapV2ArbitrageTest is Test {
     TimeswapV2Arbitrage public arbitrage;
