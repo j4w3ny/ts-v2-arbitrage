@@ -4,7 +4,9 @@ pragma abicoder v2;
 
 import "./interface/ITimeswapV2Pool.sol";
 import "./interface/ITimeswapV2Option.sol";
+import {TimeswapV2OptionBurnCallbackParam} from "./structs/OptionCallbackParam.sol";
 import "./structs/PoolParam.sol";
+import {TimeswapV2PoolRebalanceCallbackParam} from "./structs/CallbackParam.sol";
 import "./structs/ArbitrageParam.sol";
 import {TimeswapV2OptionPosition} from "./structs/enums/Position.sol";
 import {ITimeswapV2PoolRebalanceCallback} from "./interface/callback/ITimeswapV2PoolRebalanceCallback.sol";
@@ -19,7 +21,7 @@ import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
 import "@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol";
 import "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol";
 import "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol";
-import '@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol';
+import "@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol";
 
 import "@uniswap/v3-periphery/contracts/libraries/PoolAddress.sol";
 
@@ -40,15 +42,10 @@ contract TimeswapV2Arbitrage is
         swapRouter = _swapRouter;
     }
 
-   function uniswapV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external override { 
-		FlashCallbackData memory decoded = abi.decode(data, (FlashCallbackData));
-		CallbackValidation.verifyCallback(factory, decoded.poolKey);
-
-	}
+    // function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external override {
+    //     FlashCallbackData memory decoded = abi.decode(data, (FlashCallbackData));
+    //     CallbackValidation.verifyCallback(factory, decoded.poolKey);
+    // }
 
     // @dev mint short by flash swap to ensure it pass.
 
