@@ -20,23 +20,13 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
 import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
-import "@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol";
-import "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol";
-import "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol";
-import "@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol";
-
-import "@uniswap/v3-periphery/contracts/libraries/PoolAddress.sol";
 
 contract TimeswapV2Arbitrage is
-    IUniswapV3FlashCallback,
     ITimeswapV2PoolRebalanceCallback,
     Ownable,
     ITimeswapV2OptionMintCallback,
     ITimeswapV2OptionBurnCallback
 {
-    using LowGasSafeMath for uint256;
-    using LowGasSafeMath for int256;
-
     ISwapRouter public immutable swapRouter;
     ITimeswapV2Pool private immutable timeswapV2Pool;
 
@@ -44,8 +34,6 @@ contract TimeswapV2Arbitrage is
         timeswapV2Pool = _poolAddress;
         swapRouter = _swapRouter;
     }
-
-    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external override {}
 
     function timeswapV2OptionMintCallback(TimeswapV2OptionMintCallbackParam calldata param)
         external
